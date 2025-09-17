@@ -4,9 +4,14 @@ from pyecharts import options as opts
 from snownlp import SnowNLP
 from pyecharts.charts import Pie
 import jieba
-from pyecharts.charts import WordCloud
 import getnum
+# from snapshot_selenium import snapshot as driver
+import webbrowser
+from pyecharts import options as opts
+from pyecharts.charts import WordCloud
+from pyecharts.render import make_snapshot
 
+import json
 
 def hightlights(csv_path):
     number = getnum.get_num(csv_path)
@@ -79,9 +84,10 @@ def hightlights(csv_path):
             legend_opts=opts.LegendOpts(is_show=False),
             tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="line"),
         )
-        .render(f"data\\hlt\\highlights_{number}.html")
+        .render(f"data//hlt//highlights_{number}.html")
     )
 
+    return f"data//hlt//highlights_{number}.html"
 
 # 根据视频中单位时间弹幕数量制作视频高光表格，并保存为超文本标记语言格式文件。保存在本地，命名为highlights.html
 
@@ -110,9 +116,10 @@ def emotionAnalysis(csv_path):
         .add("", list(emotions.items()))
         .set_colors(["blue", "purple", "orange"])
         .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}: {c} ({d}%)"))
-        .render(f"data\\emo\\emotionAnalysis_{number}.html")
+        .render(f"data//emo//emotionAnalysis_{number}.html")
     )
-    # 根据情感倾向制作饼状图，并保存为emotionAnalysis.html文件，保存在本地
+
+    return f"data//emo//emotionAnalysis_{number}.html"
 
 
 def wordCloud(csv_path, shapeofall):
@@ -120,7 +127,6 @@ def wordCloud(csv_path, shapeofall):
     with open(csv_path, encoding="utf-8") as f:
         text = " ".join([line.split(",")[-1] for line in f.readlines()])
     # 以规定格式读取弹幕文件，并提取所需数据集。
-
     words = jieba.cut(text)
     # 调用结巴分词库，进行分词。
 
@@ -142,7 +148,10 @@ def wordCloud(csv_path, shapeofall):
             textstyle_opts=opts.TextStyleOpts(font_family="cursive"),
         )
         .render(f"data//wdcld//WordCloud_{number}.html")
+
+
     )
+    return f"data//wdcld//WordCloud_{number}.html"
 
 
 def shape_slct(number):

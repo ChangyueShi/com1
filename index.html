@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视频搜索</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="./plugins/select2/css/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+</head>
+<style>
+  body {
+      background-image: url("data/beijing.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+  }
+  .rectangle-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  }
+
+  .rectangle {
+    width: 70%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .rectangle h2 {
+    margin-top: 0;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .rectangle p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+  }
+</style>
+<body class="hold-transition">
+  <card>
+    <div class="wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <h2 class="text-center display-4">bilibili弹幕爬取与可视化分析</h2>
+          <form action="/" method="post">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <div class="row">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <label>结果类型:</label>
+                      <select class="select2" name="type" style="width: 100%;">
+                        <option value="wordcloud" selected>词云</option>
+                        <option value="sentiment">情感分析</option>
+                        <option value="highlight">高光时刻</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-group">
+                      <label>结果顺序:</label>
+                      <select class="select2" name="order" style="width: 100%;">
+                        <option selected>弹幕（不可修改）</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-3">
+                    <div class="form-group">
+                      <label>词云形状:</label>
+                      <select class="select2" name="shape" style="width: 100%;">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-lg">
+                    <input type="search" class="form-control form-control-lg" name="video_name" placeholder="在这里输入影片名称">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-lg btn-default">
+                        <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </card>
+  <!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="./plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="./plugins/select2/js/select2.full.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./dist/js/adminlte.min.js"></script>
+<script>
+    $(function () {
+      $('.select2').select2()
+    });
+</script>
+
+<div class="rectangle-container">
+  <div class="rectangle">
+    <h2>作者信息</h2>
+    <p> 杭州电子科技大学 计算机学院 施昌岳 22051028 </p>
+  </div>
+</div>
+<div class="rectangle-container">
+  <div class="rectangle">
+    <h2>使用说明</h2>
+    <p>输入需要查找的内容，选择需要生成的图像（生成词云需要指定词云类型），网页将跳转至相应地址</p>
+  </div>
+</div>
+
+</body>
+
+</html>
